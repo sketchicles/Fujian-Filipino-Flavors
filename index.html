@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Fujian to Filipino Flavors | Go, Thea </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Noto Serif"', 'Georgia', 'serif'],
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        paper: '#fdfbf7',
+                        ink: '#1a1a1a',
+                        accent: '#8c2f39',
+                        muted: '#5a5a5a',
+                        border: '#e5e0d8',
+                        placeholder: '#f4f1eb'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdfbf7;
+            color: #1a1a1a;
+        }
+        .prose p {
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .prose h2 {
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            color: #8c2f39;
+            border-bottom: 2px solid #e5e0d8;
+            padding-bottom: 0.5rem;
+        }
+        .prose h3 {
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.4rem;
+            color: #2d3748;
+        }
+        .prose h4 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .toc-link.active {
+            color: #8c2f39;
+            border-left-color: #8c2f39;
+            background-color: rgba(140, 47, 57, 0.05);
+        }
+        .figure-container {
+            margin: 2rem 0;
+        }
+        .figure-placeholder {
+            background-color: #f4f1eb;
+            border: 2px dashed #d4cfc7;
+            border-radius: 0.75rem;
+            padding: 3rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #8a8a8a;
+            transition: all 0.2s ease;
+        }
+        .figure-placeholder:hover {
+            border-color: #c4bfb7;
+            background-color: #f0ede6;
+        }
+        .figure-placeholder svg {
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+        .figure-caption {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #5a5a5a;
+            font-style: italic;
+            margin-top: 1rem;
+            line-height: 1.5;
+        }
+        .toc-link {
+            transition: all 0.2s ease;
+        }
+        .toc-link:hover {
+            color: #8c2f39;
+            background-color: rgba(140, 47, 57, 0.03);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdfbf7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4cfc7;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8c2f39;
+        }
+        .nav-overlay {
+            backdrop-filter: blur(8px);
+        }
+        @media print {
+            .no-print { display: none; }
+            .prose { max-width: 100%; }
+            .sidebar { display: none; }
+            .figure-placeholder { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-accent selection:text-white">
+
+    <!-- Mobile Nav Toggle -->
+    <div class="fixed top-4 right-4 z-50 lg:hidden">
+        <button id="menuBtn" class="p-2 bg-white rounded-lg shadow-lg border border-border hover:bg-gray-50 transition-colors">
+            <svg class="w-6 h-6 text-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </div>
+
+    <!-- Sidebar / Table of Contents -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-white border-r border-border z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto no-print">
+        <div class="p-6 border-b border-border">
+            <div class="text-xs font-bold tracking-widest text-muted uppercase mb-1">Academic Paper</div>
+            <h1 class="text-lg font-serif font-bold text-ink leading-tight">From Fujian to Filipino Flavors</h1>
+            <div class="mt-4 text-sm text-muted">
+                <p class="font-medium text-ink">Go, Thea (吴珊珊)</p>
+                <p>BTBU IMBA Program | Chinese Culture</p>
+                <p>June 2026</p>
+            </div>
+        </div>
+        <nav class="p-4 space-y-1" id="tocNav">
+            <a href="#abstract" class="toc-link block px-3 py-2 text-sm text-muted rounded-l-lg border-l-2 border-transparent transition-all">1. Abstract</a>
+            <a href="#introduction" class="toc-link block px-3 py-2 text-sm text-muted rounded-l-lg border-l-2 border-transparent transition-all">2. Introduction</a>
+            <a href="#literature" class="toc-link block px-3 py-2 text-sm text-muted rounded-l-lg border-l-2 border-transparent transition-all">3. Literature Review</a>
+            <a href="#methodology" class="toc-link block px-3 py-2 text-sm text-muted rounded-l-lg border-l-2 border-transparent transition-all">4. Methodology</a>
+            <a href="#historical" class="toc-link block px-3 py-2 text-sm text-muted rounded-l-lg border-l-2 border-transparent transition-all">5. Historical Ties</a>
+            <a href="#culinary" class="toc-link block px-3 py-2 text-sm text-muted rounded-l-lg border-l-2 border-transparent transition-all">II. Culinary Parallels</a>
+            <a href="#contrast" class="toc-link block px-3 py-2 text-sm text-muted rounded-l-lg border-l-2 border-transparent transition-all">III. Regional Contrast</a>
+            <a href="#synthesis" class="toc-link block px-3 py-2 text-sm text-muted rounded-l-lg border-l-2 border-transparent transition-all">IV. Cultural Synthesis</a>
+            <a href="#conclusion" class="toc-link block px-3 py-2 text-sm text-muted rounded-l-lg border-l-2 border-transparent transition-all">6. Conclusion</a>
+            <a href="#references" class="toc-link block px-3 py-2 text-sm text-muted rounded-l-lg border-l-2 border-transparent transition-all">References</a>
+        </nav>
+        <div class="p-4 mt-auto border-t border-border">
+            <button onclick="window.print()" class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-ink text-white rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                Print / Save PDF
+            </button>
+        </div>
+    </aside>
+
+    <!-- Overlay for mobile -->
+    <div id="overlay" class="fixed inset-0 bg-black/20 nav-overlay z-30 hidden lg:hidden" onclick="toggleMenu()"></div>
+
+    <!-- Main Content -->
+    <main class="lg:ml-72 min-h-screen">
+        <div class="max-w-4xl mx-auto px-6 py-12 lg:py-20">
+            
+            <!-- Header -->
+            <header class="mb-16 text-center border-b border-border pb-12">
+                <h1 class="text-3xl lg:text-4xl font-serif font-bold text-ink leading-tight mb-6">
+                    From Fujian to Filipino Flavors:<br>
+                    <span class="text-2xl lg:text-3xl text-accent font-normal">A Comparative Study of Southern Chinese and Cebuano Cuisine Within Philippine Regional Food Traditions</span>
+                </h1>
+                <div class="flex flex-wrap justify-center gap-6 text-sm text-muted mt-6">
+                    <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Go, Thea (吴珊珊)</span>
+                    <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg> BTBU IMBA | Chinese Culture</span>
+                    <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> June 2026</span>
+                </div>
+                <div class="mt-6 inline-flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full text-xs text-muted">
+                    Submitted to: Prof. Zhao Dan (赵丹教授)
+                </div>
+            </header>
+
+            <article class="prose font-serif">
+                
+                <!-- Abstract -->
+                <section id="abstract">
+                    <h2>1. ABSTRACT</h2>
+                    <p>This paper examines the Southern Chinese (Fujian) culinary influence on Cebuano cuisine, reasoning that it represents the most sustained and structurally similar Chinese food tradition in the Philippines compared to other regional cuisines. Through qualitative case study methodology analyzing four iconic Cebuano dishes—<em>humba</em>, <em>ngohiong</em>, <em>tikoy</em>, and <em>maci</em>—this paper traces their origins to specific Fujianese preparations and demonstrates how historical trade networks, Chinese settlement, and geographic connectivity enabled deeper cultural transmission in Cebu than in other Philippine regions. Historical document analysis from Spanish colonial records and contemporary scholarship reveals that Cebu's Parian (Chinese quarter), established in 1590, created institutional conditions for culinary continuity rather than mere adaptation. The study finds that Cebuano dishes retain closer structure, such as in ingredients and resemblance, to Fujian originals than their counterparts in other Philippine regions. This paper gives further understanding of food as living cultural diplomacy and challenges Manila-centric narratives of Chinese-Filipino heritage.</p>
+                    <p>The findings suggest that regional culinary variations reflect distinct historical experiences of cross-cultural exchange, with Cebu serving as a unique node of Sino-Philippine cultural continuity.</p>
+                    <p class="text-sm text-muted mt-4"><strong>Keywords:</strong> Cebuano cuisine, Fujian food, Chinese-Filipino culinary heritage, comparative food studies</p>
+                </section>
+
+                <!-- Introduction -->
+                <section id="introduction">
+                    <h2>2. INTRODUCTION</h2>
+                    <p>The culinary scene of the Philippines reflects centuries of cultural exchanges, yet regional variations reveal uneven layers of foreign influence. While Spanish colonization and American occupation dominate a good percentage of Philippine food history, one of the most enduring signs of influence stems from pre-colonial and colonial-era interactions with Southern China—particularly Fujian Province. This influence manifests differently across the archipelago, but nowhere is it more profound than in Cebu, where dishes like <em>humba</em>, <em>ngohiong</em>, <em>tikoy</em>, and <em>maci</em> bear an incredible resemblance to their Fujianese counterparts. The question this paper seeks to answer is: How does Cebuano cuisine reflect deeper Southern Chinese (Fujian) influence compared to other Philippine regions, and what historical, geographic, and social factors account for this distinction?</p>
+                    <p>This study connects directly to the course topic of 饮食 (cuisine) and regional variations, examining how food serves as a record of intercultural contact within the Philippine's rich history. By comparing known Cebuano dishes with both their Fujian origins and other Philippine regional cuisines (Tagalog, Bicol, Ilocano), this paper demonstrates that culinary practices are not merely adopted but actively re-imagined within specific historical and geographic contexts. The importance of this study lies in its challenge to Manila-centric narratives of Chinese-Filipino heritage. Contemporary scholarship and popular discourse often privilege Binondo (Manila's Chinatown) as the primary site of Chinese cultural influence, yet Cebu's culinary traditions suggest an equally vital, if distinct, pattern of cultural continuity. Understanding these regional variations enriches our comprehension of how maritime trade networks, settlement patterns, and community cohesion shaped Philippine cultural identity. Moreover, as China and the Philippines navigate contemporary diplomatic and economic relationships, recognizing historical ties embedded in everyday practices like cooking and eating offers a grounded perspective on cultural diplomacy.</p>
+                    <p>This paper argues that Cebuano cuisine represents the most "Southern Chinese adjacent" food tradition in the Philippines—not through superficial borrowing, but through sustained practice, adaptation, and preservation rooted in pre-colonial trade, longstanding Chinese settlement, and geographic connectivity. By tracing specific dishes to their Fujian origins and contrasting Cebu's experience with other Philippine regions, this study illuminates how everyday cuisine embodies deep historical ties between China and the Philippines.</p>
+                </section>
+
+                <!-- Literature Review -->
+                <section id="literature">
+                    <h2>3. LITERATURE REVIEW</h2>
+                    <p>Scholarship on Chinese-Filipino culinary influence has changed from descriptive classification to complex analyses of cultural transmission, adaptation, and identity formation. This literature review blends historical, anthropological, and food studies perspectives to establish the theoretical framework for understanding Cebu's unique position within Filipino food.</p>
+                    
+                    <h3>History of Chinese Presence in the Philippines</h3>
+                    <p>Primary historical sources document continuous contact with the Chinese inside the Philippine islands well before the arrival of the Spanish. Blair and Robertson's (1903) compilation of Spanish colonial records provides crucial evidence of Chinese traders (called 'sangleys') operating in Cebu as early as the 1570s, with the establishment of the Parian de Cebu in 1590 creating an established Chinese quarter second only to Manila's Binondo in size. This historical documentation is essential for understanding the structural conditions that enabled culinary transmission.</p>
+                    <p>Contemporary historian Richard T. Chu (2012) challenges Manila-centered narratives by demonstrating that Chinese presence extended throughout the archipelago, with Cebu, Iloilo, and other port cities serving as significant centers of maritime exchange. Chu argues that "In these regional centers, ethnic boundaries were fluid and cultural practices, including foodways, were actively negotiated through daily interaction, intermarriage, and commercial exchange suggesting that culinary influence was not unidirectional but emerged through sustained interaction." Teresita Ang See (2020) further said "Maritime trade networks facilitated not only the movement of goods but also the transmission of culinary knowledge, cooking techniques, and food-related cultural practices that continue to shape Philippine cuisine today."</p>
+
+                    <h3>Food as Cultural Record</h3>
+                    <p>Doreen Fernandez's book <em>Palayok: Philippine Food Through Time, On Site, In the Pot</em> (2000) established that "The Chinese contribution to Philippine cuisine is not merely a matter of introduced dishes but of fundamental techniques—stir-frying, steaming, braising—that have been absorbed into the mainstream of Filipino cooking." She further argues that "the Chinese contribution is most visible in noodle dishes and steamed buns, but in the Visayas, especially Cebu, it extends to preserved meats (<em>humba</em>), stuffed rolls (<em>ngohiong</em>), and festive sweets (<em>tikoy</em>), forms that are rarely found in purely indigenous or Spanish-influenced dishes. Her work provides the methodological foundation for tracing specific dishes to their cultural origins while acknowledging processes of localization.</p>
+                    <p>Jennifer Lantrip's (2017) thesis, <em>The Chinese Cultural Influence on Filipino Cuisine</em>, offers a systematic analysis of how Chinese food were "not merely adopted but actively reinterpreted within local Philippine contexts, particularly in port cities like Cebu where sustained contact occurred." Lantrip's work is particularly valuable for its comparative approach, documenting how similar Chinese dishes underwent different transformations in different Philippine regions based on local ingredients, existing culinary traditions, and intensity of Chinese contact.</p>
+
+                    <h3>Contemporary Perspectives on Filipino-Chinese Culinary Heritage</h3>
+                    <p>A recent growth in cultural advocacy have emphasized the importance of documenting and preserving Filipino-Chinese culinary heritage. John Sherwin Felix, the founder of Lokalpedia, encourages the documentation of regional food heritage, arguing that "understanding the Chinese roots of dishes like <em>humba</em> and <em>ngohiong</em> is not about diminishing their Filipino-ness but also about honoring the complex, layered history that makes them uniquely Filipino."</p>
+                    <p>Digital media and community platforms have also contributed to public understanding of Chinese-Filipino food culture. CHiNOY TV's (2021) documentation of <em>tikoy</em> origins traces the sweet rice cake directly to Hokkien 'ti-koe', itself a variant of Chinese nian-gao consumed during Lunar New Year celebrations. Contemporary Chinoy (a term referencing Chinese-Filipino people) voices like Thunderson Tan (@filchi_thunder) use social media to affirm that Cebu's food culture preserves Fujianese techniques "with remarkable fidelity," suggesting that culinary continuity serves as a form of cultural memory.</p>
+                    <p>Local food scholars recognize that Chinese influence varied significantly across Philippine regions. Recent reporting in Cebu Daily News (2026) highlights how Cebu's Chinese merchant communities maintained tight-knit networks well into the American period, creating conditions for intergenerational transmission of culinary knowledge.</p>
+
+                    <h3>Gaps in Existing Literature</h3>
+                    <p>While existing studies establishes the presence of Chinese influence in Philippine cuisine, several gaps remain. First, most studies focus on Manila or treat the Philippines as a monolithic entity, underexploring regional variations. Second, while historical documents confirm Chinese presence in Cebu, few studies actually connect specific Cebuano dishes to their Fujian counterparts through a detailed culinary analysis. Third, modern Chinoy voices are often underrepresented in academic literature, despite their value as carriers of cultural memory. This study addresses these gaps by combining historical document analysis, dish-by-dish comparison, and contemporary cultural advocacy to demonstrate Cebu's unique position within Philippine cuisine.</p>
+                </section>
+
+                <!-- Methodology -->
+                <section id="methodology">
+                    <h2>4. METHODOLOGY</h2>
+                    <p>This study employs a multi-method qualitative approach combining case study analysis, comparative regional analysis, and historical document analysis to examine the depth and nature of Southern Chinese (Fujian) culinary influence in Cebuano cuisine.</p>
+
+                    <h3>Qualitative Case Study: Four Iconic Dishes</h3>
+                    <p>The research focuses on four emblematic Cebuano dishes—<em>humba</em>, <em>ngohiong</em>, <em>tikoy</em>, and <em>maci</em>—selected based on three criteria: (1) documented or strongly suggested Fujian origins, (2) widespread consumption and cultural significance in Cebu, and (3) clear parallels to Fujianese preparations. For each dish, the study analyzes:</p>
+                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                        <li><strong>Ingredients:</strong> Comparison of core components (proteins, seasonings, cooking fats)</li>
+                        <li><strong>Techniques:</strong> Cooking methods (braising, steaming, frying, fermenting)</li>
+                        <li><strong>Flavor profiles:</strong> Balance of sweet, salty, sour, umami</li>
+                        <li><strong>Cultural contexts:</strong> Occasions for consumption, symbolic meanings, transmission patterns</li>
+                    </ul>
+                    <p>Data for this analysis derives from culinary reference works (declared in the References section), contemporary reporting and academic studies. Where possible, dishes are traced to specific Fujianese originals—for example, <em>humba</em> to Hokkien <em>hong-bah</em> (red-braised pork belly) and <em>tikoy</em> to <em>ti-koe</em> (sweet rice cake).</p>
+
+                    <h3>Comparative Regional Analysis</h3>
+                    <p>To establish Cebu's distinctiveness, the study compares Cebuano culinary patterns with those of three other Philippine regions: Tagalog (Luzon), Bicol (Southern Luzon), and Ilocano (Northern Luzon). This comparison examines:</p>
+                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                        <li>Presence/absence of Chinese-derived dishes: Frequency and variety of foods with clear Chinese origins</li>
+                        <li>Degree of adaptation: How closely regional dishes resemble their Chinese counterparts versus how thoroughly they have been localized</li>
+                        <li>Historical Chinese settlement patterns: Intensity and duration of Chinese presence in each region</li>
+                    </ul>
+                    <p>This comparative framework draws on Fernandez's (2000) regional food surveys, Lantrip's (2017) analysis of differential Chinese influence, and historical accounts of Chinese settlement patterns (Chu 2012; Blair & Robertson 1903). The analysis reveals that regions like Bicol, with strong indigenous coconut-based culinary traditions and minimal Chinese settlement, show markedly less Chinese influence than Cebu.</p>
+
+                    <h3>Historical Document Analysis</h3>
+                    <p>To contextualize culinary patterns within broader historical processes, the study analyzes primary and secondary historical sources documenting Chinese presence in Cebu from the pre-colonial period through the Spanish era. Primary sources include Spanish colonial records: Blair and Robertson's (1903) compilation of documents mentioning Chinese traders (sangleys) in Cebu, the establishment of the Parian de Cebu in 1590, and regulations governing Chinese residents. Secondary sources include historical scholarship: Chu's (2012) analysis of Chinese and mestizo communities, See's (2020) overview of Philippines-China relations, and Cullinane's (2020) synthesis of Chinese presence in Cebu during the Spanish era, as well as contemporary reporting on Cebu's Chinese merchant communities (Cebu Daily News 2026). This historical analysis establishes the structural conditions such as institutionalized Chinese quarters, sustained trade networks, and community cohesion that most likely enabled culinary transmission and preservation.</p>
+
+                    <h3>Paper Limitations</h3>
+                    <p>This study acknowledges several limitations. First, reliance on written sources may do not entirely represent oral transmission and informal culinary knowledge. Second, Wikipedia entries, while useful for preliminary information, are not peer-reviewed sources. Third, the study focuses on four dishes, which may not represent the full spectrum of Chinese influence in Cebuano cuisine. Future research incorporating oral histories, recipe archives, and ingredient traceability studies would strengthen these findings.</p>
+                </section>
+
+                <!-- Section 5 -->
+                <section id="historical">
+                    <h2>5. TRACING FUJIAN FLAVORS: HISTORICAL CONNECTIONS, CULINARY PARALLELS, AND REGIONAL DISTINCTIONS IN CEBUANO CUISINE</h2>
+                    
+                    <h3>I. Historical Ties: Fujian–Cebu Maritime Exchange</h3>
+                    <p>Cebu's central geographic position and natural harbor made it a strategic port city, ensuring regular visits from Fujianese traders throughout the Spanish period. These trading vessels brought not only goods but also fresh migrants, cultural updates, and crucially, food ingredients essential to Fujianese cuisine—soy sauce, dried mushrooms, preserved vegetables, and spices (Blair & Robertson, vol. 5).</p>
+                    
+                    <div class="figure-container">
+                        <img src="./images/Figure1.jpg" alt="Historical Maritime Trade Routes" class="figure-img w-full">
+                        <p class="figure-caption">Figure 1: Historical Maritime Trade Routes connecting Fujian Province, China to Cebu, Philippines</p>
+                    </div>
+
+                    <div class="figure-container">
+                       <img src="./images/Figure2.jpg" alt="Cebu location" class="figure-img w-full">
+                        <p class="figure-caption">Figure 2: Cebu's convenient central location maintained a strong trade relationship with Fujian</p>
+                    </div>
+
+                    <div class="figure-container">
+                       <img src="./images/Figure3.jpg" alt="Parian" class="figure-img w-full">
+                        <p class="figure-caption">Figure 3: The Parian district, established by the Spanish in 1590, to function as a Chinese district for Fujianese traders, enabled the preservation of Chinese culinary traditions.</p>
+                    </div>
+
+                    <p>The concentration of Fujianese merchants in Cebu's Parian district meant traditional Fujianese cooking techniques and ingredient preferences could persist with minimal external interference. As Chu (2012) notes, "ethnic boundaries were fluid and cultural practices—including foodways—were actively negotiated" in these enclaves. This institutional and geographic context created uniquely favorable conditions for culinary continuity, distinguishing Cebu from regions with more dispersed or transient Chinese presence.</p>
+                </section>
+
+                <section id="culinary">
+                    <h3>II. Culinary Parallels: Dish-by-Dish Comparison with Fujian</h3>
+                    <p>Four iconic Cebuano dishes demonstrate structural, ingredient-based, and symbolic similarities to their Fujianese originals, providing concrete evidence of culinary continuity.</p>
+
+                    <h4>Humba vs. Hong Bah</h4>
+                    <p>Cebuano <em>humba</em> derives its name from the Hokkien <em>hong-bah</em> (烘肉), meaning "red-cooked meat". Both dishes feature pork belly slow-braised with soy sauce, fermented black beans, star anise, and sugar until tender and deeply flavored. The cooking technique employs the Chinese method of <em>hong shao</em> (red braising), searing meat, then simmering it slowly in soy sauce, rice wine, sugar, and aromatic spices. This technique, uncommon in indigenous Philippine cooking, was preserved in Cebuano kitchens with remarkable resemblance.</p>
+                    <div class="figure-container">
+                        <img src="./images/Figure4.png" alt="Humba" class="figure-img w-full">
+                        <p class="figure-caption">Figure 4: Cebuano humba (left) Fujian braised pork hong-bah (right) and and share similar dark color, pork belly cuts, and sweet-savory profiles</p>
+                    </div>
+
+                    <h4>Ngohiong vs. Ngo Hiang</h4>
+                    <p><em>Ngohiong</em> derives directly from the Hokkien <em>ngoh hiang</em> (五香), meaning "five spices". Both Cebuano and Fujianese versions wrap seasoned minced pork in bean curd sheets or thin wrappers, then deep-fry until crispy, serving with sweet-sour dipping sauce. Contemporary reporting notes that "ngohiong in Cebu is not merely a street food snack but a living link to the city's Hokkien heritage, with families like the Uy/Huang () clan preserving recipes brought from Fujian generations ago" (Sitchon 2021). This intergenerational transmission within specific families demonstrates household-level preservation of Fujianese culinary knowledge.</p>
+                    <div class="figure-container">
+                        <img src="./images/Figure5.png" alt="Ngohiong" class="figure-img w-full">
+                        <p class="figure-caption">Figure 5: Cebuano ngohiong (left) reflects Fujianese five-spice roll ngohiang (right)</p>
+                    </div>
+
+                    <h4>Tikoy vs. Ti-Koe</h4>
+                    <p>Chinese-Filipino <em>tikoy</em> derives from the Hokkien <em>ti-koe</em> (甜粿), a variant of Mandarin nian gao (年糕), meaning "year cake". Both are made from glutinous rice flour and brown sugar, steamed to achieve a sticky, dense texture. The symbolic meaning is identical: the sticky consistency represents family cohesion and prosperity. As documented by CHiNOY TV (2021), "tikoy is a direct adaptation of Chinese nian gao, traditionally consumed during Lunar New Year celebrations as a symbol of prosperity and family cohesion". The persistence of celebrating Chinese New Year in Cebu demonstrates maintenance of Southern Chinese rituals alongside culinary practices.</p>
+                    <div class="figure-container">
+                        <img src="./images/Figure6.png" alt="Historical Maritime Trade Routes" class="figure-img w-full">
+                        <p class="figure-caption">Figure 6: Filipino tikoy (left) and Fujian ti-koe (right) share ingredients, texture, and Lunar New Year symbolic meanings</p>
+                    </div>
+
+                    <h4>Maci vs. Muah Chee</h4>
+                    <p><em>Maci</em> (or machi) parallels Southern Fujianese <em>muah chee</em> and Chinese mochi-like confectionery of glutinous rice balls filled with sweetened ground peanuts or sesame, coated in ground roasted peanuts mixed with sugar. Lantrip (2017) notes that "Chinese foodways were not merely adopted but actively reinterpreted within local Philippine contexts, particularly in port cities like Cebu where sustained contact occurred over multiple generations" (p. 34). Maci exemplifies this process: maintaining the fundamental structure of Chinese sweet rice balls while sometimes incorporating local ingredients like muscovado sugar.</p>
+                    <div class="figure-container">
+                        <img src="./images/Figure7.png" alt="Maci" class="figure-img w-full">
+                        <p class="figure-caption">Figure 7: Cebuano Maci (left) and Fujian Muah Chee (right) share in the same sweetened ground peanuts and sugar to serve as a confectionery dessert.</p>
+                    </div>
+
+                    <p>These four dishes demonstrate that Cebuano cuisine preserves not isolated Chinese influences but a coherent culinary system encompassing main dishes, street food, festive foods, and desserts.</p>
+                </section>
+
+                <section id="contrast">
+                    <h3>III. Contrast: Why Other Regions Show Weaker Chinese Influence</h3>
+                    <p>Comparative analysis reveals that Chinese influence varies significantly across the Philippines, with Cebu demonstrating markedly deeper Fujianese elements than Tagalog, Bicolano, or Ilocano cuisines.</p>
+
+                    <h4>Tagalog Cuisine: Selective Adoption</h4>
+                    <p>Tagalog cuisine shows Chinese influence in noodle dishes (pancit), street foods (siomai, siopao), and lumpia. However, Fernandez (2000) observes that "while Tagalog cuisine shows Chinese influence primarily in noodle dishes and street food, Cebuano cuisine demonstrates Chinese impact across multiple categories—main dishes, snacks, and festive foods". Tagalog versions undergo more substantial localization, reflecting Manila's stronger Spanish colonial influence and more rapid cultural mixing, leading to creolized food forms rather than Cebu's structural preservation.</p>
+
+                    <h4>Bicolano Cuisine: Indigenous Dominance</h4>
+                    <p>Bicolano cuisine demonstrates minimal Chinese influence, centering instead on coconut milk (gata), chili peppers, and dishes like Bicol Express and laing. Lantrip (2017) explains: "Regions like Bicol, with strong indigenous culinary traditions centered on coconut milk and chili peppers, and limited Chinese settlement, show markedly less Chinese influence than port cities like Cebu" Bicol's geographic distance from major trade routes meant minimal Chinese settlement and limited culinary transmission.</p>
+
+                    <h4>Ilocano Cuisine: Spanish and Indigenous Synthesis</h4>
+                    <p>Ilocano cuisine similarly shows weaker Chinese influence, reflecting indigenous practices and Spanish colonial introduction instead. Signature dishes like pinakbet, bagnet, and longganisa demonstrate Spanish curing techniques rather than Chinese braising or steaming methods. Cullinane (2020) states that "Chinese presence was concentrated in port cities with established trade networks—Manila, Cebu, Iloilo—while inland and northern regions experienced minimal direct Chinese contact". Ilocos was not a primary destination for Fujianese traders.</p>
+                </section>
+
+                <section id="synthesis">
+                    <h3>IV. Cultural Synthesis: Localization Without Erasure</h3>
+                    <p>The Cebuano-Fujianese culinary relationship demonstrates "localization without erasure", an adaptation to local culture while maintaining essential structural and symbolic integrity. At the ingredient level, Cebuano cooks sometimes substitute local products using local vinegar varieties or muscovado sugar, yet these substitutions rarely alter the fundamental character of the dish. Humba remains recognizable as red-braised pork; tikoy maintains its sticky, sweet character.</p>
+                    <p>At the technique level, Chinese cooking methods such as braising, steaming, and stir-frying have been fully absorbed into Cebuano culinary practice. As Fernandez (2000) notes, "The Chinese contribution to Philippine cuisine is not merely a matter of introduced dishes but of fundamental techniques that have been absorbed into the mainstream of Filipino cooking"</p>
+                    <p>Most significantly, at the cultural meaning level, Chinese-derived dishes have been fully integrated into Cebuano identity while retaining connections to their origins. Tikoy is simultaneously a Filipino Lunar New Year tradition and a recognition of Chinese heritage.</p>
+
+                    <div class="figure-container">
+                        <img src="./images/Figure8.png" alt="Culinary transmission mechanism" class="figure-img w-full">
+                        <p class="figure-caption">Figure 8: Mechanism of culinary transmission from Fujian to Cebu</p>
+                    </div>
+
+                    <p>Contemporary Chinoy voices like Thunderson Tan (@filchi_thunder) affirm that Cebu's food culture preserves Fujianese techniques "with remarkable fidelity," suggesting culinary continuity serves as cultural memory</p>
+
+                    <p>This active maintenance demonstrates that localization without erasure is an ongoing practice, not merely a historical process.</p>
+                </section>
+
+                <!-- Conclusion -->
+                <section id="conclusion">
+                    <h2>6. CONCLUSION</h2>
+                    <p>This comparative study has demonstrated that Cebuano cuisine represents the most "Southern Chinese adjacent" food tradition in the Philippines, exhibiting deeper structural, ingredient-based, and symbolic connections to Fujianese culinary practices than other Philippine regional cuisines. Through analysis of four iconic dishes such as <em>humba</em>, <em>ngohiong</em>, <em>tikoy</em>, and <em>maci</em>, this paper has traced direct lineages to specific Fujian preparations, revealing patterns of cultural continuity rather than superficial borrowing.</p>
+                    <p>The historical evidence confirms that Cebu's unique position stems from concrete structural factors: pre-colonial maritime trade networks connecting Fujian and Cebu, the institutionalization of Chinese presence through the Parian de Cebu established in 1590, and sustained community cohesion that enabled intergenerational transmission of culinary knowledge.</p>
+                    <p>The comparative regional analysis further illuminates Cebu's distinctiveness. While Tagalog cuisine shows Chinese influence primarily in noodle dishes and street food, and Bicol and Ilocano cuisines retain minimal Chinese elements due to different settlement patterns and stronger indigenous or Spanish influences, Cebuano cuisine demonstrates Chinese impact across multiple categories such as main dishes, snacks, and festive foods. This width of influence reflects the depth and duration of Chinese-Cebuano interaction.</p>
+
+                    <h3>Food as Living Cultural Diplomacy</h3>
+                    <p>Beyond its historical significance, this research underscores the contemporary relevance of culinary heritage as a form of cultural diplomacy. In an era of complex Philippines-China relations, recognizing the deep historical ties embedded in everyday practices like cooking and eating offers a grounded, human-scale perspective on bilateral connections. As Felix (2023) argues, acknowledging the Chinese roots of dishes like <em>humba</em> and <em>ngohiong</em> does not diminish their Filipino-ness but rather honors the complex, layered history that makes them uniquely Filipino. Cebu's culinary heritage thus serves as a living archive of peaceful cultural synthesis, demonstrating how cross-cultural exchange can produce enduring, beloved traditions.</p>
+
+                    <h3>Directions for Future Research</h3>
+                    <p>This study suggests several promising directions for future research. First, oral history collection from Cebuano elders and Chinoy community members could capture intergenerational transmission patterns and family recipes not documented in written sources. Second, ingredient traceability studies employing DNA analysis or isotopic testing could scientifically verify the origins of key ingredients like soy sauce varieties and spice blends. Third, comprehensive recipe archives comparing historical Cebuano cookbooks with Fujian culinary texts would provide systematic evidence of technique and ingredient transmission. Fourth, expansion to other Philippine regions with significant Chinese heritage—such as Iloilo, Bacolod, or Davao—would create a more complete map of regional variations in Chinese culinary influence.</p>
+                    <p>Finally, this paper invites broader reflection on how food serves as a vehicle for cultural memory and identity formation. In Cebu, every bite of humba, every ngohiong, every slice of tikoy during Lunar New Year constitutes an act of cultural remembrance and a tangible connection to centuries of exchange between Fujian and the Visayas. As globalization connects food cultures worldwide, documenting and preserving these distinctive regional traditions becomes not merely an academic exercise but an act of cultural stewardship.</p>
+                </section>
+
+                <!-- References -->
+                <section id="references">
+                    <h2>REFERENCES</h2>
+                    <ol class="list-decimal pl-6 space-y-2 text-sm text-muted font-sans">
+                        <li>Blair, Emma Helen, and James Alexander Robertson, editors. <em>The Philippine Islands, 1493–1898</em>. Vol. 5, Arthur H. Clark Company, 1903. Project Gutenberg, https://www.gutenberg.org/files/42884/42884-h/42884-h.htm</li>
+                        <li>Chu, Richard T. "The 'Chinese' and the 'Mestizos' of the Philippines: Towards a New Interpretation." <em>Philippine Studies: Historical and Ethnographic Viewpoints</em>, vol. 50, no. 3, 2012, pp. 299–328. Ateneo de Manila University, archium.ateneo.edu/phstudies/vol50/iss3/2/</li>
+                        <li>Fernandez, Doreen G. <em>Palayok: Philippine Food Through Time, On Site, In the Pot</em>. Bookmark, 2000.</li>
+                        <li>Felix, John Sherwin. "Championing Filipino Food Heritage Through Lokalpedia." <em>Adobo Magazine</em>, 31 Aug. 2023, www.adobomagazine.com/arts-culture/lokalpedia-founder-john-sherwin-felix-on-spotlighting-filipino-food-heritage-one-ingredient-at-a-time/.</li>
+                        <li>"Ngohiong." Wikipedia, Wikimedia Foundation, en.wikipedia.org/wiki/Ngohiong. Accessed 21 May 2026.</li>
+                        <li>Sitchon, John. "Ngohiong: A Cebuano Original." <em>Rappler</em>, 7 Feb. 2021, www.rappler.com/life-and-style/food-drinks/cebuano-original-ngohiong/.</li>
+                        <li>Cullinane, Michael. "The Chinese of Cebu in the Spanish Era: An Overview." <em>Philippine Quarterly of Culture and Society</em>, vol. 48, no. 3, 2020, pp. 176-228. University of San Carlos. http://www.jstor.org/stable/27230001 Accessed 21 May 2026.</li>
+                        <li>See, Teresita Ang. "Historical and Cultural Foundations of Philippines-China Relations." <em>SSDR</em>, vol. 1, no. 1, 2020, publishing.pup.edu.ph/ojs/index.php/SSDR/article/download/161/119/414.</li>
+                        <li>"Humba." Wikipedia, Wikimedia Foundation, en.wikipedia.org/wiki/Humba. Accessed 21 May 2026.</li>
+                        <li>Lantrip, Jennifer. <em>The Chinese Cultural Influence on Filipino Cuisine</em>. 2017. University of San Francisco, repository.usfca.edu/context/thes/article/1334/viewcontent/The_Chinese_Cultural_Influence_on_Filipino_Cuisine.pdf.</li>
+                        <li>"Nian gao." Wikipedia, Wikimedia Foundation, en.wikipedia.org/wiki/Nian_gao. Accessed 21 May 2026</li>
+                        <li>"Significance and Origins of Tikoy." CHiNOY TV, 1 Feb. 2021, www.chinoy.tv/significance-and-origins-of-tikoy/.</li>
+                        <li>Tan, Thunderson. @filchi_thunder. Instagram, www.instagram.com/filchi_thunder/. Accessed 21 May 2026.</li>
+                        <li>"Trade, Grit, and Growth: Lessons from Cebu's Chinese Merchants." <em>Cebu Daily News</em>, 17 Feb. 2026, cebudailynews.inquirer.net/697788/trade-grit-and-growth-lessons-from-cebus-chinese-merchants.</li>
+                    </ol>
+                </section>
+
+            </article>
+
+            <footer class="mt-20 pt-8 border-t border-border text-center text-sm text-muted font-sans">
+                <p>© 2026 Go, Thea Samantha. All Rights Reserved.</p>
+                <p class="mt-1">IMBA Program | Introduction to China</p>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+            if (isClosed) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Scroll Spy for TOC
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.toc-link');
+
+        function scrollSpy() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', scrollSpy);
+        window.addEventListener('load', scrollSpy);
+
+        // Close mobile menu on link click
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
